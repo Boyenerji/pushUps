@@ -25,42 +25,28 @@ let count = 0;
 
 
 function playAudio() {
-  count++;
+    count++;
 
-
+    console.log(count);
   if (count <= 24) {
+
 
     audio1.play();
 
     setTimeout(function() {
         audio2.play();
-    }, 800);
+    }, 500);
 
-    audio2.addEventListener("ended", function() {
-          playAudio();
-    });
+    setTimeout(function() {
+        playAudio();
+    }, 700);
 
-
-
-    // Добавляем обработчик события ended для первого аудиофайла
-    // audio1.addEventListener("ended", function() {
-    //   // Когда первый аудиофайл закончится, ждем 1 секунду
-    //   setTimeout(function() {
-    //     // Затем воспроизводим второй аудиофайл
-    //     audio2.play();
-
-    //     // Добавляем обработчик события ended для второго аудиофайла
-    //     audio2.addEventListener("ended", function() {
-    //       // Когда второй аудиофайл закончится, вызываем функцию playAudio снова
+    // audio2.addEventListener("ended", function() {
     //       playAudio();
-    //     });
-    //   }, 1000);
     // });
   }
 }
 
-// Вызываем функцию playAudio в первый раз
-// playAudio();
 
 </script>
     
