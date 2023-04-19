@@ -4,27 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 
-    <button id="playbtn">Воспроизвести</button>
-    <input type="number" id="countInput">Кол-во 
+    <div class="main">
+        Кол-во <input type="number" id="countInput">
+        <button id="playbtn">Воспроизвести</button>
+    </div>
+
 
 <script>
 
 
 let playbtn = document.getElementById("playbtn");
 let countInput = document.getElementById("countInput");
+let main = document.querySelector(".main");
 
-
+console.log(main);
 
 playbtn.addEventListener("click", function() {
-    console.log(countInput.value);
+    console.log(main);
+
+    playbtn.remove();
+    countInput.remove();
+
     async function playAudioWithDelay(audioFiles, delay, times) {
     for (let i = 0; i < times; i++) {
         const audio1 = new Audio(audioFiles[0]);
-    
+
+        main.style.fontSize = '40px';
+
+        main.innerHTML = `${i + 1}`;
+        console.log(i + 1);
         audio1.play();
     
         await new Promise(resolve => setTimeout(resolve, delay));
@@ -43,7 +56,7 @@ playbtn.addEventListener("click", function() {
         'audio2.mp3',
     ];
 
-    const delay = 800;
+    const delay = 700;
 
     let times = countInput.value;
 
@@ -54,95 +67,6 @@ playbtn.addEventListener("click", function() {
 
 </script>
     
-    <!-- <audio controls
-        src="audio1.mp3">
-    </audio> -->
-    <!-- <script>
-        let audio1 = new Audio("audio1.mp3");
-        audio1.play();
-        // console.log(audio1);
-        // let audio2 = new Audio("audio2.mp3");
-
-        // // Добавляем обработчик события ended для первого аудио
-        // audio1.addEventListener("ended", function() {
-        // // Когда первое аудио закончится, ждем 1 секунду
-        // setTimeout(function() {
-        //     // Затем воспроизводим второе аудио
-        //     audio2.play();
-        // }, 1000);
-        // });
-
-        // audio1.play();
-    </script> -->
-
-
-<!-- Кнопка для запуска аудио -->
-
-
-    <!-- Аудиоэлемент -->
-    <!-- <audio id="audio" src="audio1.mp3"></audio>
-    <audio id="audio" src="audio2.mp3"></audio> -->
-
-    <!-- Скрипт для обработки клика по кнопке -->
-    <!-- <script>
-
-
-
-        let audio1 = new Audio("audio1.mp3");
-        let audio2 = new Audio("audio2.mp3");
-
-
-        for (let index = 0; index < 3; index++) {
-            console.log('1')
-            audio1.play();
-            setTimeout(function() {
-                // Затем воспроизводим второе аудио
-                audio2.play();
-            }, 1200);
-            
-        }
-        // audio1.play();
-        // setTimeout(function() {
-        //     // Затем воспроизводим второе аудио
-        //     audio2.play();
-        // }, 1200);
-
-        // Добавляем обработчик события ended для первого аудио
-        // audio1.addEventListener("ended", function() {
-        // // Когда первое аудио закончится, ждем 1 секунду
-        // setTimeout(function() {
-        //     // Затем воспроизводим второе аудио
-        //     audio2.play();
-        // }, 100);
-        // });
-
-        // audio1.play();
-
-
-
-
-
-
-    // let audio1 = new Audio("audio1.mp3");
-    // let audio2 = new Audio("audio2.mp3");
-
-
-    // // Получаем элементы по идентификаторам
-    // let playbtn = document.getElementById("playbtn");
-    // let audio = document.getElementById("audio");
-
-    // // Добавляем обработчик события click для кнопки
-    // playbtn.addEventListener("click", function() {
-    //     audio.play();
-    //     audio1.addEventListener("ended", function() {
-    //     // Когда первое аудио закончится, ждем 1 секунду
-    //     setTimeout(function() {
-    //         // Затем воспроизводим второе аудио
-    //         audio2.play();
-    //     }, 1000);
-    //     });
-    // });
-    </script> -->
 </body>
 </html>
 
