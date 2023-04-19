@@ -9,43 +9,47 @@
 <body>
 
     <button id="playbtn">Воспроизвести</button>
+    <input type="number" id="countInput">Кол-во 
 
 <script>
-    // Создаем два объекта Audio
-let audio1 = new Audio("audio1.mp3");
-let audio2 = new Audio("audio2.mp3");
+
+
 let playbtn = document.getElementById("playbtn");
+let countInput = document.getElementById("countInput");
+
 
 
 playbtn.addEventListener("click", function() {
-    playAudio();
-});
-
-let count = 0;
-
-
-function playAudio() {
-    count++;
-
-    console.log(count);
-  if (count <= 24) {
-
-
-    audio1.play();
-
-    setTimeout(function() {
+    console.log(countInput.value);
+    async function playAudioWithDelay(audioFiles, delay, times) {
+    for (let i = 0; i < times; i++) {
+        const audio1 = new Audio(audioFiles[0]);
+    
+        audio1.play();
+    
+        await new Promise(resolve => setTimeout(resolve, delay));
+    
+        const audio2 = new Audio(audioFiles[1]);
+    
         audio2.play();
-    }, 500);
+    
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    }
 
-    setTimeout(function() {
-        playAudio();
-    }, 700);
+    // Создаем массив с путями к аудио файлам
+    const audioFiles = [
+        'audio1.mp3',
+        'audio2.mp3',
+    ];
 
-    // audio2.addEventListener("ended", function() {
-    //       playAudio();
-    // });
-  }
-}
+    const delay = 800;
+
+    let times = countInput.value;
+
+    playAudioWithDelay(audioFiles, delay, times);
+    
+});
 
 
 </script>
